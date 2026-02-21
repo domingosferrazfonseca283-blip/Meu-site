@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Milomércios | Admin</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --bg: #f8f9fa;
+            --white: #ffffff;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg);
+        }
+
+        /* Menu Lateral */
+        aside {
+            width: 250px;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .logo-admin {
+            padding: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-weight: bold;
+        }
+
+        nav {
+            flex: 1;
+            padding: 10px 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 15px 25px;
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            background-color: var(--accent);
+            padding-left: 35px;
+        }
+
+        /* Área de Conteúdo */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        /* Cards de Resumo */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+        }
+
+        .card h3 { margin: 0; font-size: 0.9rem; color: #7f8c8d; }
+        .card p { margin: 10px 0 0; font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+
+        /* Responsividade para Celular */
+        @media (max-width: 768px) {
+            aside { width: 70px; }
+            aside span { display: none; } /* Esconde o texto do menu no celular */
+            .logo-admin { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <div class="logo-admin">M<span>ilomércios</span></div>
+        <nav>
+            <a href="#">🏠 <span>Dashboard</span></a>
+            <a href="#">📦 <span>Produtos</span></a>
+            <a href="#">👥 <span>Usuários</span></a>
+            <a href="#">📊 <span>Vendas</span></a>
+            <a href="#">⚙️ <span>Configurações</span></a>
+        </nav>
+    </aside>
+
+    <main>
+        <header>
+            <h2>Visão Geral</h2>
+            <div class="user-info">Olá, <strong>Admin</strong></div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="card">
+                <h3>Vendas Hoje</h3>
+                <p>R$ 1.250,00</p>
+            </div>
+            <div class="card" style="border-left-color: #27ae60;">
+                <h3>Novos Pedidos</h3>
+                <p>12</p>
+            </div>
+            <div class="card" style="border-left-color: #e67e22;">
+                <h3>Estoque Baixo</h3>
+                <p>3 Itens</p>
+            </div>
+        </section>
+
+        <section style="margin-top: 30px;">
+            <h3>Últimos Pedidos</h3>
+            <table style="width: 100%; background: white; border-radius: 10px; padding: 10px; text-align: left;">
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>#1022</td>
+                    <td>João Silva</td>
+                    <td style="color: green;">Pago</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

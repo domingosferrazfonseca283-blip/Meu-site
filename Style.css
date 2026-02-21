@@ -1,0 +1,194 @@
+/* Configurações Gerais */
+:root {
+    --primary: #2563eb;    /* Azul Moderno */
+    --dark: #1e293b;       /* Cinza Escuro */
+    --light: #f8fafc;      /* Fundo Claro */
+    --accent: #f59e0b;     /* Cor para botões/promoções */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+/* Cabeçalho */
+header {
+    background-color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+/* Vitrine de Produtos */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 5%;
+}
+
+.produto-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s;
+    border: 1px solid #e2e8f0;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.produto-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Botões */
+button {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+/* Estilos para a Página de Detalhes */
+.detalhe-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 5%;
+}
+
+.produto-view {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap; /* Para ficar vertical no telemóvel */
+}
+
+.imagem-principal img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.info-compra {
+    flex: 1;
+    min-width: 300px;
+}
+
+.preco-grande {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btn-comprar {
+    background-color: #16a34a; /* Verde para destacar o checkout */
+    font-size: 1.2rem;
+    padding: 15px;
+}
+/* Estilos do Carrinho */
+.carrinho-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 5%;
+}
+
+.carrinho-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.itens-carrinho {
+    flex: 2;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item img {
+    border-radius: 8px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.qtd-input {
+    width: 50px;
+    padding: 5px;
+}
+
+.btn-remover {
+    background: #fee2e2;
+    color: #ef4444;
+    width: auto;
+    font-size: 0.8rem;
+}
+
+.resumo-pedido {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    height: fit-content;
+    border: 1px solid #e2e8f0;
+}
+
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--dark);
+}
+
+.btn-checkout {
+    background-color: var(--accent);
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto | Milomércios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Milomércios</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Voltar à Loja</a></li>
+                <li><a href="#">Carrinho (0)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="detalhe-container">
+        <section class="produto-view">
+            <div class="imagem-principal">
+                <img src="https://via.placeholder.com/500" alt="Imagem do Produto">
+            </div>
+
+            <div class="info-compra">
+                <h2>Smartphone Ultra Pro 2026</h2>
+                <p class="categoria">Eletrónicos > Telemóveis</p>
+                <p class="preco-grande">R$ 4.999,00</p>
+                <p class="descricao-longa">
+                    Este é o mais novo lançamento disponível no Milomércios. 
+                    Com tecnologia de ponta, bateria de longa duração e 
+                    câmara de 200MP para capturar todos os teus momentos.
+                </p>
+                
+                <div class="opcoes">
+                    <label>Quantidade:</label>
+                    <input type="number" value="1" min="1">
+                </div>
+
+                <button class="btn-comprar">Finalizar Compra Agora</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

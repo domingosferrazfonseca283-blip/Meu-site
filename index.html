@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milomércios | Loja Oficial</title>
+    <style>
+        /* CSS Básico para o Celular */
+        body { font-family: sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+        header { background: #232f3e; color: white; padding: 15px; text-align: center; }
+        .produto-card { background: white; margin: 10px; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn-comprar { background: #febd69; border: none; padding: 10px; width: 100%; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Milomércios</h1>
+</header>
+
+<main>
+    <div class="produto-card">
+        <img src="https://via.placeholder.com/150" alt="Produto" style="width:100%">
+        <h3>Smartphone X1</h3>
+        <p>R$ 1.200,00</p>
+        <button class="btn-comprar" onclick="adicionarAoCarrinho()">Comprar Agora</button>
+    </div>
+</main>
+
+<script>
+    function adicionarAoCarrinho() {
+        alert("Produto adicionado ao carrinho!");
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milomércios | Loja Virtual</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; background: #eee; }
+        header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+        
+        /* Grid de Produtos */
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .card-produto {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card-produto h3 { font-size: 1.1rem; margin: 10px 0; color: #333; }
+        .card-produto p { color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        
+        .btn-comprar {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Milomércios</h1>
+    <small>Sua vitrine inteligente</small>
+</header>
+
+<main class="vitrine" id="vitrine-produtos">
+    </main>
+
+<script>
+    function carregarVitrine() {
+        const container = document.getElementById('vitrine-produtos');
+        
+        // Puxa os dados da mesma "gaveta" que o Admin usou
+        const estoque = JSON.parse(localStorage.getItem('milomercios_estoque')) || [];
+
+        if (estoque.length === 0) {
+            container.innerHTML = "<p style='text-align:center; grid-column: 1/-1;'>Nenhum produto disponível no momento.</p>";
+            return;
+        }
+
+        // Renderiza cada produto cadastrado
+        container.innerHTML = estoque.map(produto => `
+            <div class="card-produto">
+                <div style="background:#ddd; height:100px; border-radius:5px; margin-bottom:10px; display:flex; align-items:center; justify-content:center; color:#666;">Sem Foto</div>
+                <h3>${produto.nome}</h3>
+                <p>R$ ${produto.preco}</p>
+                <button class="btn-comprar" onclick="adicionarAoCarrinho('${produto.nome}')">
+                    Comprar
+                </button>
+            </div>
+        `).join('');
+    }
+
+    function adicionarAoCarrinho(nome) {
+        alert("Você adicionou " + nome + " ao seu carrinho!");
+    }
+
+    // Executa ao abrir a página
+    window.onload = carregarVitrine;function adicionarAoCarrinho(nome, preco) {
+    // 1. Pega o carrinho atual
+    let carrinho = JSON.parse(localStorage.getItem('milomercios_carrinho')) || [];
+    
+    // 2. Adiciona o novo produto
+    carrinho.push({ nome: nome, preco: preco });
+    
+    // 3. Salva de volta
+    localStorage.setItem('milomercios_carrinho', JSON.stringify(carrinho));
+    
+    if(confirm("Produto adicionado! Ir para o carrinho?")) {
+        window.location.href = "checkout.html";
+    }
+}
+// Exemplo de como a renderização vai ficar com imagem
+container.innerHTML = estoque.map(produto => `
+    <div class="card-produto">
+        <img src="${produto.imagem || 'https://via.placeholder.com/150'}" style="width:100%; border-radius:5px;">
+        <h3>${produto.nome}</h3>
+        <p>R$ ${produto.preco}</p>
+        <button class="btn-comprar" onclick="adicionarAoCarrinho('${produto.nome}', '${produto.preco}')">
+            Comprar
+        </button>
+    </div>
+`).join('');
+
+</script>
+</body>
+</html>
+
+
+  

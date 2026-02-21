@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milomércios | Finalizar Compra</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .carrinho-container { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .item-carrinho { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
+        .total-box { margin-top: 20px; text-align: right; font-size: 1.5rem; font-weight: bold; color: #2c3e50; }
+        .btn-finalizar { background: #27ae60; color: white; width: 100%; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; margin-top: 20px; }
+        .btn-limpar { background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="carrinho-container">
+    <h2>Seu Carrinho 🛒</h2>
+    <div id="itens-lista">
+        </div>
+    
+    <div class="total-box">
+        Total: R$ <span id="valor-total">0,00</span>
+    </div>
+
+    <button class="btn-finalizar" onclick="finalizar()">FINALIZAR PEDIDO</button>
+    <button onclick="limparCarrinho()" style="margin-top:10px; background:none; border:none; color:grey; text-decoration:underline; width:100%;">Esvaziar Carrinho</button>
+</div>
+
+<script>
+    function carregarCarrinho() {
+        const itens = JSON.parse(localStorage.getItem('milomercios_carrinho')) || [];
+        const listaHtml = document.getElementById('itens-lista');
+        let total = 0;
+
+        if (itens.length === 0) {
+            listaHtml.innerHTML = "<p>O carrinho está vazio.</p>";
+            document.getElementById('valor-total').innerText = "0,00";
+            return;
+        }
+
+        listaHtml.innerHTML = itens.map((item, index) => {
+            total += parseFloat(item.preco);
+            return `
+                <div class="item-carrinho">
+                    <span>${item.nome}</span>
+                    <span>R$ ${item.preco}</span>
+                </div>
+            `;
+        }).join('');
+
+        document.getElementById('valor-total').innerText = total.toFixed(2);
+    }
+
+    function limparCarrinho() {
+        localStorage.removeItem('milomercios_carrinho');
+        carregarCarrinho();
+    }
+
+function finalizar() {
+    const itens = JSON.parse(localStorage.getItem('milomercios_carrinho')) || [];
+    let texto = "Olá! Gostaria de fazer o seguinte pedido na Milomércios:\n\n";
+    let total = 0;
+
+    itens.forEach(item => {
+        texto += `• ${item.nome}: R$ ${item.preco}\n`;
+        total += parseFloat(item.preco);
+    });
+
+    texto += `\n*Total: R$ ${total.toFixed(2)}*`;
+    
+    // Substitua pelo seu número com código do país/DDD (ex: 5511999999999)
+    const meuWhats = "SEU_NUMERO_AQUI"; 
+    const link = `https://wa.me/${meuWhats}?text=${encodeURIComponent(texto)}`;
+    
+    window.open(link, '_blank');
+}
+
+
+    window.onload = carregarCarrinho;
+</script>
+
+</body>
+</html>

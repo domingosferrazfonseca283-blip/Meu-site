@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Teu Carrinho | Milomércios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Milomércios</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Continuar a Comprar</a></li>
+            </ul>
+        </nav>
+    </header>
+    // Exemplo de lógica de cálculo
+let carrinho = [
+    { nome: "Smartphone X1", preco: 1200.00, qtd: 1 },
+    { nome: "Capa Protetora", preco: 50.00, qtd: 2 }
+];
+
+function calcularTotal() {
+    let total = carrinho.reduce((sum, item) => sum + (item.preco * item.qtd), 0);
+    console.log("Total da Compra: R$ " + total.toFixed(2));
+    // Aqui você atualizaria o HTML com o valor real
+    document.getElementById('display-total').innerText = `R$ ${total.toFixed(2)}`;
+}
+
+
+    <main class="carrinho-container">
+        <h2>O Teu Carrinho</h2>
+        
+        <div class="carrinho-grid">
+            <section class="itens-carrinho">
+                <div class="item">
+                    <img src="https://via.placeholder.com/80" alt="Produto">
+                    <div class="item-info">
+                        <h3>Smartphone Ultra Pro</h3>
+                        <p>R$ 4.999,00</p>
+                    </div>
+                    <input type="number" value="1" min="1" class="qtd-input">
+                    <button class="btn-remover">Remover</button>
+                </div>
+                </section>
+
+            <aside class="resumo-pedido">
+                <h3>Resumo</h3>
+                <div class="resumo-linha">
+                    <span>Subtotal:</span>
+                    <span>R$ 4.999,00</span>
+                </div>
+                <div class="resumo-linha">
+                    <span>Envio:</span>
+                    <span class="grátis">Grátis</span>
+                </div>
+                <hr>
+                <div class="resumo-linha total">
+                    <span>Total:</span>
+                    <span>R$ 4.999,00</span>
+                </div>
+                <button class="btn-checkout">Ir para o Pagamento</button>
+            </aside>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
